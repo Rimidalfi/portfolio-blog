@@ -1,9 +1,13 @@
 import "./App.css";
+import APITest from "./Components/Test/APITest";
+import MainLayout from "./Components/MainLayout";
 
 export default function App() {
   return (
     <>
-      <h1>Portfolio</h1>
+      <MainLayout>
+        <APITest />
+      </MainLayout>
     </>
   );
 }
