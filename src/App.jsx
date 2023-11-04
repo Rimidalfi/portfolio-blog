@@ -1,12 +1,12 @@
 import "./App.css";
-import APITest from "./Components/Test/APITest";
+import Blog from "./Components/Blog/Index";
 import MainLayout from "./Components/MainLayout";
 
 export default function App() {
   return (
     <>
       <MainLayout>
-        <APITest />
+        <Blog />
       </MainLayout>
     </>
   );
