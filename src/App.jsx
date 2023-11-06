@@ -13,12 +13,12 @@ export default function App() {
     <BrowserRouter>
     <MainLayout>
       <AboutUs />
-    // <Routes>
-    //   <Route path="/AboutUs" element={<AboutUs />}/>
-    // </Routes>
+    <Routes>
+      <Route path="/AboutUs" element={<AboutUs />}/>
+  </Routes>
     
-    // </MainLayout>
-    // </BrowserRouter>
+     </MainLayout>
+    </BrowserRouter>
     
   );
  }
