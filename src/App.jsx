@@ -1,7 +1,7 @@
 import "./App.css";
-import {useState, useEffect } from "react"
-
-import APITest from "./Components/Test/APITest";
+import Blog from "./Components/Blog/Index";
+import Impressum from "./Components/Impressum/Index";
+import AboutUs from "./Components/AboutUs/Index";
 import MainLayout from "./Components/MainLayout";
 
 export default function App() {
@@ -10,7 +10,9 @@ export default function App() {
   return (
     <>
       <MainLayout>
-        <APITest />
+        <AboutUs />
+        {/* <Blog /> */}
+        {/* <Impressum /> */}
       </MainLayout>
     </>
   );
