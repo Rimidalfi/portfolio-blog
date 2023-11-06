@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { createClient } from "contentful";
-import ImpressumPost from "./ImpressumPost";
+import BlogPost from "./BlogPost";
 
-const entryID = "3QmiOyhMCCGpPkcG9gxcqr";
 // Import enviromental variables deconstructed
 const { VITE_SPACE_ID, VITE_ACCESS_TOKEN } = import.meta.env;
-const Impressum = () => {
-  const [impressumpost, setImpressumpost] = useState(null);
+
+const APITest = () => {
+  const [blogpost, setBlogpost] = useState(null);
   useEffect(() => {
     //erstellen Client mit Zugangsdaten
     const client = createClient({
@@ -16,22 +16,21 @@ const Impressum = () => {
     });
     //API Fetch der spezifischen Daten
     client
-      .getEntry(entryID)
+      .getEntry("KHX0ss4jw8yFseFtyk4Np")
       .then((entry) => {
-        setImpressumpost(entry.fields);
+        console.log(entry.fields);
+        setBlogpost(entry.fields);
       })
       .catch(console.error);
   }, []);
-  console.log(
-    impressumpost !== null
-      ? ("Impressum:", impressumpost.impressumText.content)
-      : "Lade Impressum Objekt"
-  );
+
   return (
     <>
-      {impressumpost !== null ? (
-        <ImpressumPost
-          impressumJSON={impressumpost.impressumText}
+      {blogpost !== null ? (
+        <BlogPost
+          title={blogpost.blogTitle}
+          author={blogpost.blogAuthor}
+          date={blogpost.blogCreationDate}
         />
       ) : (
         <p>LOADING ...</p>
@@ -40,4 +39,4 @@ const Impressum = () => {
   );
 };
 
-export default Impressum;
+export default APITest;
