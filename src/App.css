@@ -1,9 +1,10 @@
 #root {
-  max-width: 1280px;
+  width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
+
 
 .autorenliste {
   display: grid;
@@ -46,4 +47,50 @@
   height: 300px;
   width: 500px;
   margin-top: 1em;
+}
+
+/* Navigation */
+nav {
+  justify-content: space-around;
+}
+.logo {
+  height: 75px;
+  width: auto;
+}
+nav, ul, .logoContainer {
+  display: flex
+}
+
+ul li {
+  padding-right: 1rem;
+  list-style-type: none;
+  
+}
+
+ul li:hover {
+  text-decoration: overline 2px;
+}
+
+/* Main  */
+main {
+  padding-top: 2rem;
+}
+
+/* header  */
+
+.headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.titelContainer {
+  display: flex-inline;
+  justify-content: center;
+  align-content: center;
+  width: 30%;
+}
+.header {
+  height: 500px;
+  max-width: auto;
 }
