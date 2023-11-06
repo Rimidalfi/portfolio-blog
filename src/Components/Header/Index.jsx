@@ -32,7 +32,7 @@ export default function Header() {
 
 
 const logo = navi?.map((item)=>{
-  return <img key={item.sys.id} src={item.fields.logo.fields.file.url}/>})
+  return <img className="logo" key={item.sys.id} src={item.fields.logo.fields.file.url}/>})
 
     const Header = navi?.map((item)=>{
         return (
@@ -45,10 +45,10 @@ const logo = navi?.map((item)=>{
   return (
     <>
         {navi !== null ? (
-          <>
+          <nav>
        <Logo logo={logo} />
        <Navigation navigation={Header} /> 
-       </>
+       </nav>
        ) : (
         <p>LOADING ...</p>
       )}

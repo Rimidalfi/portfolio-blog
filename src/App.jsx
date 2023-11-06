@@ -5,6 +5,7 @@ import BlogCard from "./Components/BlogCard/Index";
 import AboutUs from "./Components/AboutUs/Index";
 import MainLayout from "./Components/MainLayout";
 import { Routes, Route } from "react-router-dom";
+import Home from "./Components/Homepage/Index"
 
 
 export default function App() {
@@ -14,7 +15,7 @@ export default function App() {
     <>
       <MainLayout>
         <Routes>
-          {/* <Route path="/" element={<Home />} /> */}
+          <Route path="/" element={<Home />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/AboutUs" element={<AboutUs />} />
         </Routes>
