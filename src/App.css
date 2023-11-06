@@ -31,3 +31,19 @@
   grid-area: 1 / 2 / 3 / 3;
   margin-right: -3em;
  }
+
+ .blogCard {
+  background-color: blue;
+  border: 2px solid black;
+}
+
+.blogCardButton {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.blogCardImg {
+  height: 300px;
+  width: 500px;
+  margin-top: 1em;
+}
