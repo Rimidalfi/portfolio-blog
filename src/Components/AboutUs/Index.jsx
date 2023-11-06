@@ -44,7 +44,7 @@ const ListOfAutors = autorlist?.map((item) => {
    return (
     <>
         <h1>Unser Autorenteam</h1>
-        <div>{ListOfAutors}</div>
+        <div>{ListOfAutors}</div> 
     </>
    );
 };
