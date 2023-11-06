@@ -5,6 +5,8 @@ import AboutUs from "./Components/AboutUs/Index";
 import MainLayout from "./Components/MainLayout";
 
 export default function App() {
+
+ 
   return (
     <>
       <MainLayout>
@@ -14,4 +16,4 @@ export default function App() {
       </MainLayout>
     </>
   );
-}
+ }
