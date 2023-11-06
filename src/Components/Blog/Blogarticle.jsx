@@ -32,6 +32,7 @@ const RICHTEXT_OPTIONS = {
       return <li className="blogListItem">{children}</li>;
     },
     [INLINES.HYPERLINK]: (node, children) => {
+      console.log(node);
       return (
         <a className="blogHyperlink" href={node.data.uri}>
           {children}
