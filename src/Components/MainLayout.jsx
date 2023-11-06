@@ -1,12 +1,12 @@
 import Header from "./Header/Index";
-import Footer from "./Footer";
-import { Outlet } from "react-router-dom";
+import Footer from "./Footer/Index";
 
-export default function MainLayout() {
+
+export default function MainLayout({ children }) {
   return (
     <>
       <Header />
-      <main><Outlet/></main>
+      <main>{children}</main>
       <Footer />
     </>
   );

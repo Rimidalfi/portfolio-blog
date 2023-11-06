@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import Logo from "./Logo"
 import Navigation from "./Navigation"
 import * as contentful from "contentful"
-import { NavLink } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 export default function Header() {
   const[navi, setNavi] = useState(null)
@@ -37,9 +37,9 @@ const logo = navi?.map((item)=>{
     const Header = navi?.map((item)=>{
         return (
         <ul key={item.sys.id}>
-         <NavLink to="/"> <li>{item.fields.home}</li> </NavLink>
-         <NavLink to="/"><li>{item.fields.blog}</li></NavLink>
-         <NavLink to="/"><li>{item.fields.aboutUs}</li></NavLink>
+         <Link to="/"> <li>{item.fields.home}</li> </Link>
+         <Link to="/"><li>{item.fields.blog}</li></Link>
+         <Link to="/"><li>{item.fields.aboutUs}</li></Link>
         </ul>)})
         
   return (
