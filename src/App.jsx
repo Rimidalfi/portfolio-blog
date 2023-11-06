@@ -1,24 +1,28 @@
 import "./App.css";
 import Blog from "./Components/Blog/Index";
 import Impressum from "./Components/Impressum/Index";
-import AboutUs from "./Components/AboutUs";
+import BlogCard from "./Components/BlogCard/Index";
+import AboutUs from "./Components/AboutUs/Index";
 import MainLayout from "./Components/MainLayout";
-// import { BrowserRouter, Routes, Route} from "react-router-dom"
+import { Routes, Route } from "react-router-dom";
 
 
 export default function App() {
 
 // const [page, setPage] = useState (<AboutUs />)
   return (
-    <BrowserRouter>
-    <MainLayout>
-      <AboutUs />
-    <Routes>
-      <Route path="/AboutUs" element={<AboutUs />}/>
-  </Routes>
-    
-     </MainLayout>
-    </BrowserRouter>
-    
+    <>
+      <MainLayout>
+        <Routes>
+          {/* <Route path="/" element={<Home />} /> */}
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/AboutUs" element={<AboutUs />} />
+        </Routes>
+        {/* <AboutUs />
+        <Blog /> */}
+        {/* {/* <Impressum /> */}
+        {/* <BlogCard /> */}
+      </MainLayout>
+    </>
   );
  }

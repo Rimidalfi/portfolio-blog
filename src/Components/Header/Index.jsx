@@ -38,8 +38,8 @@ const logo = navi?.map((item)=>{
         return (
         <ul key={item.sys.id}>
          <Link to="/"> <li>{item.fields.home}</li> </Link>
-         <Link to="/"><li>{item.fields.blog}</li></Link>
-         <Link to="/"><li>{item.fields.aboutUs}</li></Link>
+         <Link to="/Blog"><li>{item.fields.blog}</li></Link>
+         <Link to="/AboutUs"><li>{item.fields.aboutUs}</li></Link>
         </ul>)})
         
   return (
