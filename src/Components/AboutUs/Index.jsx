@@ -45,14 +45,6 @@ const ListOfAutors = autorlist?.map((item) => {
     <>
         <h1>Unser Autorenteam</h1>
         <div>{ListOfAutors}</div>
-
-//       {/* {impressumpost !== null ? (
-//         <ImpressumPost 
-//           impressumJSON={impressumpost.impressumText}
-//         />
-//       ) : (
-//         <p>LOADING ...</p>
-//       )} */}
     </>
    );
 };
