@@ -1,4 +1,4 @@
-import Header from "./Header";
+import Header from "./Header/Index";
 import Footer from "./Footer";
 
 export default function MainLayout({ children }) {

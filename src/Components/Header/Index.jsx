@@ -34,12 +34,12 @@ const logo = navi?.map((item)=>{
   return <img key={item.sys.id} src={item.fields.logo.fields.file.url}/>})
 
     const Header = navi?.map((item)=>{
-        return 
+        return (
         <ul key={item.sys.id}>
           <li>{item.fields.home}</li> 
           <li>{item.fields.blog}</li>
           <li>{item.fields.aboutUs}</li>
-        </ul>})
+        </ul>)})
   
   return (
     <>
