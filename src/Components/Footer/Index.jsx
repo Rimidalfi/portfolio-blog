@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { createClient } from "contentful";
 
@@ -27,29 +27,26 @@ export default function Footer() {
       <footer>
         <div className="footerContainer">
           <div className="footerLogo">
-            <NavLink to="/home">
+            <Link to="/">
               <img
-                src={navbar?.logo.fields.file.url || "loading"}
-                alt={navbar?.logo.fields.title || "loading"}
+                src={navbar?.logo.fields.file.url}
+                alt={navbar?.logo.fields.title}
               />
-            </NavLink>
+            </Link>
           </div>
           <div className="footerLinks">
             <ul>
               <li>
-                <NavLink to="/">Home</NavLink>
+                <Link to="/">Home</Link>
               </li>
               <li>
-                <NavLink to="/blog">Blog</NavLink>
+                <Link to="/blogfeed">Blog</Link>
               </li>
               <li>
-                <NavLink to="/about">Autoren</NavLink>
+                <Link to="/about">Autoren</Link>
               </li>
               <li>
-                <NavLink to="/imprint">Impressum</NavLink>
-              </li>
-              <li>
-                <NavLink to="/blogcard">BlogCardTest</NavLink>
+                <Link to="/imprint">Impressum</Link>
               </li>
             </ul>
           </div>

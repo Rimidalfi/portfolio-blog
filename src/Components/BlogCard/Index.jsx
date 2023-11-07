@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { createClient } from "contentful";
 import Card from "./Card";
+import { Link } from "react-router-dom";
 
 // Import enviromental variables deconstructed
 const { VITE_SPACE_ID, VITE_ACCESS_TOKEN } = import.meta.env;
@@ -17,7 +18,6 @@ const BlogCard = ({ id }) => {
     client
       .getEntry(id)
       .then((entry) => {
-        console.log("ENTRY:", entry);
         setBlogcard(entry.fields);
       })
       .catch(console.error);
@@ -26,11 +26,13 @@ const BlogCard = ({ id }) => {
   return (
     <>
       {blogcard !== null ? (
-        <Card
-          title={blogcard.blogTitle}
-          img={blogcard.blogImage}
-          intro={blogcard.blogIntroduction}
-        />
+        <Link to={`/blog/${id}`}>
+          <Card
+            title={blogcard.blogTitle}
+            img={blogcard.blogImage}
+            intro={blogcard.blogIntroduction}
+          />
+        </Link>
       ) : (
         <p>LOADING ...</p>
       )}
