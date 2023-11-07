@@ -48,6 +48,9 @@ export default function Footer() {
               <li>
                 <NavLink to="/imprint">Impressum</NavLink>
               </li>
+              <li>
+                <NavLink to="/blogcard">BlogCardTest</NavLink>
+              </li>
             </ul>
           </div>
         </div>
