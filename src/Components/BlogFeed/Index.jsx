@@ -3,7 +3,7 @@ import { createClient } from "contentful";
 
 // Import enviromental variables deconstructed
 const { VITE_SPACE_ID, VITE_ACCESS_TOKEN } = import.meta.env;
-const BlogCard = () => {
+const BlogFeed = () => {
   const [blogpostlist, setblogpostlist] = useState([]);
   useEffect(() => {
     //erstellen Client mit Zugangsdaten
@@ -16,7 +16,7 @@ const BlogCard = () => {
     client
       .getEntries({
         content_type: "blogPost",
-        // limit: 5,
+        limit: 5,
       })
       .then((response) => {
         setblogpostlist(response.items);
@@ -53,4 +53,4 @@ const ListOfBlogposts = blogpostlist?.map((item) => {
    );
 };
 
-export default BlogCard;
+export default BlogFeed;
