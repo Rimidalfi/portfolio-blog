@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Logo from "./Logo";
 import Navigation from "./Navigation";
 import * as contentful from "contentful";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   const [navi, setNavi] = useState(null);
@@ -21,32 +22,46 @@ export default function Header() {
     client
       .getEntry("5Vc2P1WXzlVV4SjzIqQCFy")
       .then((data) => {
-        // console.log(data);
+        console.log(data);
         setNavi([data]);
       })
       .catch(console.error);
   }, []);
 
   const logo = navi?.map((item) => {
-    return <img key={item.sys.id} src={item.fields.logo.fields.file.url} />;
+    return (
+      <img
+        className="logo"
+        key={item.sys.id}
+        src={item.fields.logo.fields.file.url}
+      />
+    );
   });
 
   const Header = navi?.map((item) => {
-    return;
-    <ul key={item.sys.id}>
-      <li>{item.fields.home}</li>
-      <li>{item.fields.blog}</li>
-      <li>{item.fields.aboutUs}</li>
-    </ul>;
+    return (
+      <ul key={item.sys.id}>
+        <Link to="/">
+          {" "}
+          <li>{item.fields.home}</li>{" "}
+        </Link>
+        <Link to="/blog">
+          <li>{item.fields.blog}</li>
+        </Link>
+        <Link to="/about">
+          <li>{item.fields.aboutUs}</li>
+        </Link>
+      </ul>
+    );
   });
 
   return (
     <>
       {navi !== null ? (
-        <>
+        <nav>
           <Logo logo={logo} />
           <Navigation navigation={Header} />
-        </>
+        </nav>
       ) : (
         <p>LOADING ...</p>
       )}

@@ -17,7 +17,6 @@ export default function Footer() {
     client
       .getEntry(navBarID)
       .then((entry) => {
-        // console.log("API RESPOND", entry.fields.logo.fields.file.url);
         setNavbar(entry.fields);
       })
       .catch(console.error);
@@ -38,7 +37,7 @@ export default function Footer() {
           <div className="footerLinks">
             <ul>
               <li>
-                <NavLink to="/home">Home</NavLink>
+                <NavLink to="/">Home</NavLink>
               </li>
               <li>
                 <NavLink to="/blog">Blog</NavLink>
