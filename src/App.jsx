@@ -19,10 +19,7 @@ export default function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/AboutUs" element={<AboutUs />} />
         </Routes>
-        {/* <AboutUs />
-        <Blog /> */}
-        {/* {/* <Impressum /> */}
-        {/* <BlogCard /> */}
+        <BlogCard />
       </MainLayout>
     </>
   );

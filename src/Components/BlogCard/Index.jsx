@@ -14,7 +14,10 @@ const BlogCard = () => {
     });
     //API Fetch der spezifischen Daten
     client
-      .getEntries({content_type: "blogPost"})
+      .getEntries({
+        content_type: "blogPost",
+        // limit: 5,
+      })
       .then((response) => {
         setblogpostlist(response.items);
         
