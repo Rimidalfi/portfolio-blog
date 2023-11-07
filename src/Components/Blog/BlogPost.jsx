@@ -1,4 +1,4 @@
-import Blogarticle from "../Blog/Blogarticle";
+import Blogarticle from "./Blogarticle";
 
 const BlogPost = ({ title, author, date, img, blogJSON }) => {
   return (

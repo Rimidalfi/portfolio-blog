@@ -17,7 +17,7 @@ export default function Footer() {
     client
       .getEntry(navBarID)
       .then((entry) => {
-        console.log("API RESPOND", entry.fields.logo.fields.file.url);
+        // console.log("API RESPOND", entry.fields.logo.fields.file.url);
         setNavbar(entry.fields);
       })
       .catch(console.error);
@@ -44,7 +44,7 @@ export default function Footer() {
                 <NavLink to="/blog">Blog</NavLink>
               </li>
               <li>
-                <NavLink to="/authors">Autoren</NavLink>
+                <NavLink to="/about">Autoren</NavLink>
               </li>
               <li>
                 <NavLink to="/imprint">Impressum</NavLink>

@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { createClient } from "contentful";
+import Card from "./Card";
 
 // Import enviromental variables deconstructed
 const { VITE_SPACE_ID, VITE_ACCESS_TOKEN } = import.meta.env;
-const BlogCard = () => {
-  const [blogpostlist, setblogpostlist] = useState([]);
+const BlogCard = ({ id }) => {
+  const [blogcard, setBlogcard] = useState(null);
   useEffect(() => {
     //erstellen Client mit Zugangsdaten
     const client = createClient({
@@ -14,40 +15,26 @@ const BlogCard = () => {
     });
     //API Fetch der spezifischen Daten
     client
-      .getEntries({content_type: "blogPost"})
-      .then((response) => {
-        setblogpostlist(response.items);
-        
+      .getEntry(id)
+      .then((entry) => {
+        console.log("ENTRY:", entry);
+        setBlogcard(entry.fields);
       })
       .catch(console.error);
   }, []);
 
-  console.log(blogpostlist)
-
-const ListOfBlogposts = blogpostlist?.map((item) => {
-
-       return (
-          <>
-            <div key={item.sys.id} className="blogCard">
-            <div>
-             <img src={item.fields.blogImage.fields.file.url} className="blogCardImg"/>
-             </div>
-             <br />
-             <div>
-             <h2>{item.fields.blogTitle}</h2>
-             </div>
-             <div className="blogCardButton">
-             <button>Zum Blogbeitrag</button>
-             </div>
-             <br />
-             </div>
-        </>
-    )})
-   return (
+  return (
     <>
-        <div>{ListOfBlogposts}</div> 
+      {blogcard !== null ? (
+        <Card
+          title={blogcard.blogTitle}
+          img={blogcard.blogImage}
+          intro={blogcard.blogIntroduction}
+        />
+      ) : (
+        <p>LOADING ...</p>
+      )}
     </>
-   );
+  );
 };
-
 export default BlogCard;
