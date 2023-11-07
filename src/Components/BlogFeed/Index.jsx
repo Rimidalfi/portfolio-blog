@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { createClient } from "contentful";
+import BlogCard from "../BlogCard/Index";
 
 // Import enviromental variables deconstructed
 const { VITE_SPACE_ID, VITE_ACCESS_TOKEN } = import.meta.env;
-const BlogFeed = () => {
+const BlogFeed = ({ blogCount }) => {
   const [blogpostlist, setblogpostlist] = useState([]);
   useEffect(() => {
     //erstellen Client mit Zugangsdaten
@@ -16,36 +17,18 @@ const BlogFeed = () => {
     client
       .getEntries({
         content_type: "blogPost",
-        limit: 5,
+        limit: blogCount,
       })
       .then((response) => {
         setblogpostlist(response.items);
       })
       .catch(console.error);
   }, []);
-
-  console.log(blogpostlist);
-
   const ListOfBlogposts = blogpostlist?.map((item) => {
     return (
-      <>
-        <div key={item.sys.id} className="blogCard">
-          <div>
-            <img
-              src={item.fields.blogImage.fields.file.url}
-              className="blogCardImg"
-            />
-          </div>
-          <br />
-          <div>
-            <h2>{item.fields.blogTitle}</h2>
-          </div>
-          <div className="blogCardButton">
-            <button>Zum Blogbeitrag</button>
-          </div>
-          <br />
-        </div>
-      </>
+      <div key={item.sys.id}>
+        <BlogCard id={item.sys.id} />
+      </div>
     );
   });
   return (

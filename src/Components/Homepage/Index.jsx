@@ -18,7 +18,6 @@ export default function Home() {
     client
       .getEntry("3RNUuPtoHE3ZdLUOMYmGCj")
       .then((data) => {
-        console.log(data);
         setHeader([data]);
       })
       .catch(console.error);
@@ -49,13 +48,16 @@ export default function Home() {
         </div>
         <div>{headerBild}</div>
       </div>
-      <div>
-        <form action="">
-          <label htmlFor="Search">Discover</label>
-          <input type="text" />
-        </form>
-      </div>
-      <BlogFeed />
+      <BlogFeed blogCount={5} />
     </>
   );
+}
+
+{
+  /* <div>
+  <form action="">
+    <label htmlFor="Search">Discover</label>
+    <input type="text" />
+  </form>
+</div> */
 }

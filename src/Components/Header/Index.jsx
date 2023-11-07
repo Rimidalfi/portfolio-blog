@@ -22,7 +22,6 @@ export default function Header() {
     client
       .getEntry("5Vc2P1WXzlVV4SjzIqQCFy")
       .then((data) => {
-        console.log(data);
         setNavi([data]);
       })
       .catch(console.error);
@@ -30,11 +29,13 @@ export default function Header() {
 
   const logo = navi?.map((item) => {
     return (
-      <img
-        className="logo"
-        key={item.sys.id}
-        src={item.fields.logo.fields.file.url}
-      />
+      <Link to="/">
+        <img
+          className="logo"
+          key={item.sys.id}
+          src={item.fields.logo.fields.file.url}
+        />
+      </Link>
     );
   });
 
@@ -45,7 +46,7 @@ export default function Header() {
           {" "}
           <li>{item.fields.home}</li>{" "}
         </Link>
-        <Link to="/blog">
+        <Link to="/blogfeed">
           <li>{item.fields.blog}</li>
         </Link>
         <Link to="/about">

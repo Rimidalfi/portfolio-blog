@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { createClient } from "contentful";
 import BlogPost from "./BlogPost";
+import { useParams } from "react-router-dom";
 
 // Import enviromental variables deconstructed
 const { VITE_SPACE_ID, VITE_ACCESS_TOKEN } = import.meta.env;
-const Blog = ({ id }) => {
+const Blog = () => {
+  const { id } = useParams();
   const [blogpost, setBlogpost] = useState(null);
   useEffect(() => {
     //erstellen Client mit Zugangsdaten
@@ -17,7 +19,7 @@ const Blog = ({ id }) => {
     client
       .getEntry(id)
       .then((entry) => {
-        console.log("ENTRY:", entry);
+        console.log("id:", id);
         setBlogpost(entry.fields);
       })
       .catch(console.error);

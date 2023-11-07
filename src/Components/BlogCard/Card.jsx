@@ -10,8 +10,11 @@ const Card = ({ title, intro, img }) => {
         src={img.fields.file.url}
         alt={img.description}
       />
-      <button className="blogCardButton">Zum Artikel</button>
     </>
   );
 };
 export default Card;
+
+{
+  /* <button className="blogCardButton">Zum Artikel</button> */
+}
