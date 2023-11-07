@@ -32,6 +32,7 @@ const RICHTEXT_OPTIONS = {
       return <li className="blogListItem">{children}</li>;
     },
     [INLINES.HYPERLINK]: (node, children) => {
+      console.log(node);
       return (
         <a className="blogHyperlink" href={node.data.uri}>
           {children}
@@ -56,12 +57,12 @@ const RICHTEXT_OPTIONS = {
   },
 };
 
-const Blogarticle = ({ blogJSON }) => {
+const BlogCardRT = ({ intro }) => {
   return (
-    <div className="blogBody">
-      {documentToReactComponents(blogJSON, RICHTEXT_OPTIONS)}
+    <div className="blogCardIntro">
+      {documentToReactComponents(intro, RICHTEXT_OPTIONS)}
     </div>
   );
 };
 
-export default Blogarticle;
+export default BlogCardRT;

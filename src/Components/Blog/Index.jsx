@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import { createClient } from "contentful";
 import BlogPost from "./BlogPost";
-//Artikel: "KHX0ss4jw8yFseFtyk4Np", "6hrcPL5uujZTtr7oxQxkA2"
-const entryID = "6hrcPL5uujZTtr7oxQxkA2";
+
 // Import enviromental variables deconstructed
 const { VITE_SPACE_ID, VITE_ACCESS_TOKEN } = import.meta.env;
-const Blog = () => {
+const Blog = ({ id }) => {
   const [blogpost, setBlogpost] = useState(null);
   useEffect(() => {
     //erstellen Client mit Zugangsdaten
@@ -16,18 +15,14 @@ const Blog = () => {
     });
     //API Fetch der spezifischen Daten
     client
-      .getEntry(entryID)
+      .getEntry(id)
       .then((entry) => {
-        console.log(entry.fields.blogImage);
+        console.log("ENTRY:", entry);
         setBlogpost(entry.fields);
       })
       .catch(console.error);
   }, []);
-  console.log(
-    blogpost !== null
-      ? ("Artikel:", blogpost.blogArticle.content)
-      : "Lade Blog Artikel Objekt"
-  );
+
   return (
     <>
       {blogpost !== null ? (
