@@ -27,8 +27,8 @@ export default function Home() {
     return (
       <img
         className="header"
-        key={item.sys.id}
-        src={item.fields.headerBild.fields.file.url}
+         key={item.sys.id}
+         src={item.fields.headerBild.fields.file.url}
       />
     );
   });
