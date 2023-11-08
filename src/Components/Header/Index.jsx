@@ -41,7 +41,7 @@ export default function Header() {
 
   const Header = navi?.map((item) => {
     return (
-      <ul key={item.sys.id}>
+      <ul className="navbar" key={item.sys.id}>
         <Link to="/">
           {" "}
           <li>{item.fields.home}</li>{" "}
