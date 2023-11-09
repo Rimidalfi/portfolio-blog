@@ -4,9 +4,16 @@
   width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
+  /* text-align: center; */
 }
 
+a {
+  text-decoration: none;
+}
+
+p, h2 {
+  color: antiquewhite
+}
 
 .autorenliste {
   display: grid;
@@ -84,13 +91,15 @@
 
 /* Navigation */
 nav {
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
 }
 .logo {
-  height: 75px;
+  height: 60px;
   width: auto;
   margin-top: 0.4em;
   border-radius: 0.5em;
+  padding-left: 1rem;
 }
 nav, ul, .logoContainer {
   display: flex
@@ -98,15 +107,13 @@ nav, ul, .logoContainer {
 }
 
 ul li {
-  padding-right: 1rem;
+  padding-right: 2rem;
   list-style-type: none;
-  color: #feba67; 
+  color: #00BED0; 
+  font-size: 1.5rem;
   
 }
 
-.footerlinks ul li{
-  color: #feba67;  
-}
 
 ul li:hover {
   text-decoration: overline 2px;
@@ -140,15 +147,40 @@ main {
   box-shadow: 10px 20px 50px 20px black;
 }
 
+/* Footer  */
 .footerContainer {
   background-color: rgba(0,31,78,0.5);
   border-radius: 1em;
+
+  /* flex-direction: column; */
+  width: 1280px;
+  height: 300px;
 }
+
+footer {
+ text-align: center;
+}
+.footerlinks ul  {
+  color: #feba67; 
+  display: flex;
+  justify-content: center;
+}
+
+.footerLogo {
+  
+  /* height: 50%;
+  width: auto; */
+  margin-top: 0.4em;
+  border-radius: 0.5em;
+}
+
 
 .navbarall {
   background-color: rgba(0,31,78,0.5);
   border-radius: 1em;
 }
+
+/* Blog  */
 
 .blogHeader {
   display: grid;
@@ -184,12 +216,6 @@ main {
   padding: 3em;
 }
 
-.footerLogo {
-  height: 50%;
-  width: auto;
-  margin-top: 0.4em;
-  border-radius: 0.5em;
-}
 
 .headerContent {
   background-color: rgba(0, 0, 0, 0.5);

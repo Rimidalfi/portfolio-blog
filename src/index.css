@@ -16,11 +16,11 @@
 
 a {
   font-weight: 500;
-  color: #feba67 
+  color: #00BED0;
 }
-a:hover {
+/* a:hover {
   color: #feba67 
-}
+} */
 
 body {
   margin: 0;
@@ -61,9 +61,9 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
-  a:hover {
+  /* a:hover {
     color: #747bff;
-  }
+  } */
   button {
     background-color: #f9f9f9;
   }

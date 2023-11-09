@@ -50,9 +50,10 @@ export default function Footer() {
               />
             </Link>
           </div>
-        </div>
+        
         <div className="footerInfo">
-          <p>&copy; 2023 BRW Portfolio Blog. Alle Rechte vorbehalten.</p>
+          <p>&copy; 2023 BRW KI Blog. Alle Rechte vorbehalten.</p>
+        </div>
         </div>
       </footer>
     </>

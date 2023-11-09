@@ -14,9 +14,9 @@ export default function Header() {
 
   useEffect(() => {
     const client = contentful.createClient({
-      space: "oz7f6gt77mhs",
+      space: VITE_SPACE_ID,
       environment: "master",
-      accessToken: "TvI3tvQ_YpazFu5isGpalaV2u-7RTmAEzxRTGqjFBqA",
+      accessToken: VITE_ACCESS_TOKEN,
     });
 
     client
