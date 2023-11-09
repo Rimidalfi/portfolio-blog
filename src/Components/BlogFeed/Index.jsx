@@ -21,6 +21,8 @@ const BlogFeed = ({ blogCount }) => {
       })
       .then((response) => {
         setblogpostlist(response.items);
+        const sortedData = response.items.sort((a, b) => new Date(a.fields.blogCreationDate) - new Date(b.fields.blogCreationDate));
+        console.log(sortedData);
       })
       .catch(console.error);
   }, []);

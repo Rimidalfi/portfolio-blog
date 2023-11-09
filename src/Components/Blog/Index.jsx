@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { createClient } from "contentful";
 import BlogPost from "./BlogPost";
 import { useParams } from "react-router-dom";
+import Head from "../Head"
 
 // Import enviromental variables deconstructed
 const { VITE_SPACE_ID, VITE_ACCESS_TOKEN } = import.meta.env;
@@ -23,12 +24,17 @@ const Blog = () => {
         setBlogpost(entry.fields);
       })
       .catch(console.error);
-  }, []);
+  }, [id]);
 
   return (
     <>
+     <Head>
+        <title>{blogpost?.blogTitle}</title>
+      </Head>
+      
       {blogpost !== null ? (
-        <BlogPost
+       
+        <BlogPost 
           title={blogpost.blogTitle}
           author={blogpost.blogAuthor}
           date={blogpost.blogCreationDate}
@@ -38,6 +44,7 @@ const Blog = () => {
       ) : (
         <p>LOADING ...</p>
       )}
+      
     </>
   );
 };

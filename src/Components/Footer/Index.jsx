@@ -42,17 +42,18 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-          <div className="footerLogo">
+          <div>
             <Link to="/">
-              <img
+              <img className="footerLogo"
                 src={navbar?.logo.fields.file.url}
                 alt={navbar?.logo.fields.title}
               />
             </Link>
           </div>
-        </div>
+        
         <div className="footerInfo">
-          <p>&copy; 2023 BRW Portfolio Blog. Alle Rechte vorbehalten.</p>
+          <p>&copy; 2023 BRW KI Blog. Alle Rechte vorbehalten.</p>
+        </div>
         </div>
       </footer>
     </>

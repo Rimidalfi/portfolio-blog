@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { createClient } from "contentful";
+import { Helmet } from "react-helmet";
+import Head from "../Head";
 
 // Import enviromental variables deconstructed
 const { VITE_SPACE_ID, VITE_ACCESS_TOKEN } = import.meta.env;
@@ -27,7 +29,6 @@ const AboutUs = () => {
 const ListOfAutors = autorlist?.map((item) => {
 
        return (
-          <>
             <div key={item.sys.id} className="autorenliste">
              <div className="autorName">
              <h2>{item.fields.nameAutor}</h2>
@@ -39,10 +40,12 @@ const ListOfAutors = autorlist?.map((item) => {
              <p>{item.fields.about}</p>
              </div>
              </div>
-        </>
     )})
    return (
     <>
+          <Head>
+            <title>About Us</title>
+            </Head>
         <h1>Unser Autorenteam</h1>
         <div>{ListOfAutors}</div> 
     </>

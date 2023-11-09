@@ -8,9 +8,9 @@ const BlogPost = ({ title, author, date, img, blogJSON }) => {
       <div className="blogTitle">
       <h1>{title}</h1></div>
       <div className="blogAuthor">
-        <p >{author}</p></div>
+        <p >Autor: {author}</p></div>
       <div className="blogDate">
-        <p>{date}</p>
+        <p>Erstellt am: {date}</p>
       </div>
       </div>
       <img src={img.fields.file.url} alt={img.description}  className="blogImage"/>

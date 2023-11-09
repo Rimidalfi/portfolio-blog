@@ -1,71 +1,66 @@
 import { useState, useEffect } from "react";
-import Logo from "./Logo";
-import Navigation from "./Navigation";
+
 import * as contentful from "contentful";
 import { Link } from "react-router-dom";
 
 export default function Header() {
   const [navi, setNavi] = useState(null);
-
   const { VITE_ACCESS_TOKEN, VITE_SPACE_ID } = import.meta.env;
-
+  const navBarID = "5Vc2P1WXzlVV4SjzIqQCFy";
   // Peter API
   // const URL = `https://cdn.contentful.com/spaces/${VITE_SPACE_ID}/entries/5Vc2P1WXzlVV4SjzIqQCFy?access_token=${VITE_ACCESS_TOKEN}&content_type=Navbar`
 
   useEffect(() => {
     const client = contentful.createClient({
-      space: "oz7f6gt77mhs",
+      space: VITE_SPACE_ID,
       environment: "master",
-      accessToken: "TvI3tvQ_YpazFu5isGpalaV2u-7RTmAEzxRTGqjFBqA",
+      accessToken: VITE_ACCESS_TOKEN,
     });
 
     client
-      .getEntry("5Vc2P1WXzlVV4SjzIqQCFy")
+      .getEntry(navBarID)
       .then((data) => {
+        console.log("NAvi", data)
         setNavi([data]);
       })
       .catch(console.error);
   }, []);
 
-  const logo = navi?.map((item) => {
-    return (
-      <Link to="/">
-        <img
-          className="logo"
-          key={item.sys.id}
-          src={item.fields.logo.fields.file.url}
-        />
-      </Link>
-    );
-  });
 
-  const Header = navi?.map((item) => {
+  const navBar = navi?.map((item) => {
     return (
-      <ul className="navbar" key={item.sys.id}>
-        <Link to="/">
-          {" "}
-          <li>{item.fields.home}</li>{" "}
-        </Link>
-        <Link to="/blogfeed">
-          <li>{item.fields.blog}</li>
-        </Link>
-        <Link to="/about">
-          <li>{item.fields.aboutUs}</li>
-        </Link>
+
+      <nav key={item.sys.id} className="navbarall">
+      <Link to="/">
+        <div  className="logoContainer"><img
+          className="logo"
+          src={item.fields.logo.fields.file.url}
+        /></div></Link>
+        <ul className="navbar" >
+         <Link to="/">
+       <li >{item.fields.home}</li>
+     </Link>
+     <Link to="/blogfeed">
+       <li >{item.fields.blog}</li>
+     </Link>
+     <Link to="/about">
+       <li >{item.fields.aboutUs}</li>
+     </Link>
       </ul>
+  
+      </nav>
     );
   });
 
   return (
-    <>
-      {navi !== null ? (
-        <nav className="navbarall">
-          <Logo logo={logo} />
-          <Navigation navigation={Header} />
-        </nav>
-      ) : (
-        <p>LOADING ...</p>
-      )}
-    </>
+  <>
+   {navi !== null ? (
+     <div key={navi.map(item => item.sys.id).join('-')}>
+       {navBar}
+     </div>
+   ) : (
+     <p>....Loading</p>
+   )}
+ </>
   );
 }
