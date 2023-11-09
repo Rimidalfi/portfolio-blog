@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import * as contentful from "contentful";
 import { Link } from "react-router-dom";
 import BlogFeed from "../BlogFeed/Index";
+import { Helmet } from "react-helmet";
+import Head from "../Head";
 
 export default function Home() {
   const [header, setHeader] = useState(null);
@@ -42,6 +44,9 @@ export default function Home() {
 
   return (
     <>
+    <Head> 
+      <title>Portfolio Blog - Home</title>
+    </Head>
       <div className="headerContainer">
         <div className="titelContainer">
           <h1>{headerTitel}</h1>

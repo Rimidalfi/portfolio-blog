@@ -14,8 +14,8 @@ export default function App() {
       <MainLayout>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/blogcard" element={<BlogCard id={entryID} />} />
-          <Route path="/blog" element={<Blog id={entryID} />} />
+          {/* <Route path="/blogcard" element={<BlogCard id={entryID} />} /> */}
+          <Route path="/blog/:id" element={<Blog  />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/imprint" element={<Impressum />} />
         </Routes>
@@ -23,3 +23,4 @@ export default function App() {
     </>
   );
 }
+// id={entryID}

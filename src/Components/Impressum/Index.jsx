@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { createClient } from "contentful";
 import ImpressumPost from "./ImpressumPost";
+import { Helmet } from "react-helmet";
+import Head from "../Head";
 
 const entryID = "3QmiOyhMCCGpPkcG9gxcqr";
 // Import enviromental variables deconstructed
@@ -29,6 +31,9 @@ const Impressum = () => {
   );
   return (
     <>
+        <Head>
+        <title>About Us</title>
+        </Head>
       {impressumpost !== null ? (
         <ImpressumPost
           impressumJSON={impressumpost.impressumText}

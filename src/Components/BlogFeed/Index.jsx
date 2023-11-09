@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { createClient } from "contentful";
+import { Link } from "react-router-dom";
+
 
 // Import enviromental variables deconstructed
 const { VITE_SPACE_ID, VITE_ACCESS_TOKEN } = import.meta.env;
@@ -20,6 +22,8 @@ const BlogFeed = () => {
       })
       .then((response) => {
         setblogpostlist(response.items);
+        const sortedData = response.items.sort((a, b) => new Date(a.fields.blogCreationDate) - new Date(b.fields.blogCreationDate));
+        console.log(sortedData);
       })
       .catch(console.error);
   }, []);
@@ -41,7 +45,7 @@ const BlogFeed = () => {
             <h2>{item.fields.blogTitle}</h2>
           </div>
           <div className="blogCardButton">
-            <button>Zum Blogbeitrag</button>
+          <Link to={`/blog/${item.sys.id}`}><button>Zum Blogbeitrag</button></Link>
           </div>
           <br />
         </div>

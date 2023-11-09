@@ -1,10 +1,14 @@
 import { useState, useEffect } from "react";
 import { createClient } from "contentful";
 import BlogPost from "./BlogPost";
+import { useParams } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import Head from "../Head"
 
 // Import enviromental variables deconstructed
 const { VITE_SPACE_ID, VITE_ACCESS_TOKEN } = import.meta.env;
-const Blog = ({ id }) => {
+const Blog = () => {
+  const { id } = useParams();
   const [blogpost, setBlogpost] = useState(null);
   useEffect(() => {
     //erstellen Client mit Zugangsdaten
@@ -17,16 +21,22 @@ const Blog = ({ id }) => {
     client
       .getEntry(id)
       .then((entry) => {
+        // console.log("Blogpost:", blogPost);
         console.log("ENTRY:", entry);
         setBlogpost(entry.fields);
       })
       .catch(console.error);
-  }, []);
+  }, [id]);
 
   return (
     <>
+     <Head>
+        <title>{blogpost?.blogTitle}</title>
+      </Head>
+      
       {blogpost !== null ? (
-        <BlogPost
+       
+        <BlogPost 
           title={blogpost.blogTitle}
           author={blogpost.blogAuthor}
           date={blogpost.blogCreationDate}
@@ -36,6 +46,7 @@ const Blog = ({ id }) => {
       ) : (
         <p>LOADING ...</p>
       )}
+      
     </>
   );
 };
