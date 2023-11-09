@@ -3,13 +3,19 @@ import Blogarticle from "./Blogarticle";
 const BlogPost = ({ title, author, date, img, blogJSON }) => {
   return (
     <>
-      <h1 className="blogTitle">{title}</h1>
-      <div>
-        <p className="blogAuthor">{author}</p>
-        <p className="blogDate">{date}</p>
+    <div className="blogEntry">
+    <div className="blogHeader">
+      <div className="blogTitle">
+      <h1>{title}</h1></div>
+      <div className="blogAuthor">
+        <p >{author}</p></div>
+      <div className="blogDate">
+        <p>{date}</p>
       </div>
-      <img src={img.fields.file.url} alt={img.description} />
+      </div>
+      <img src={img.fields.file.url} alt={img.description}  className="blogImage"/>
       <Blogarticle blogJSON={blogJSON} />
+      </div>
     </>
   );
 };

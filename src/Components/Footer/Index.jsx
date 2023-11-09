@@ -26,15 +26,7 @@ export default function Footer() {
     <>
       <footer>
         <div className="footerContainer">
-          <div className="footerLogo">
-            <Link to="/">
-              <img
-                src={navbar?.logo.fields.file.url}
-                alt={navbar?.logo.fields.title}
-              />
-            </Link>
-          </div>
-          <div className="footerLinks">
+        <div className="footerLinks">
             <ul>
               <li>
                 <Link to="/">Home</Link>
@@ -49,6 +41,14 @@ export default function Footer() {
                 <Link to="/imprint">Impressum</Link>
               </li>
             </ul>
+          </div>
+          <div className="footerLogo">
+            <Link to="/">
+              <img
+                src={navbar?.logo.fields.file.url}
+                alt={navbar?.logo.fields.title}
+              />
+            </Link>
           </div>
         </div>
         <div className="footerInfo">
