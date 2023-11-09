@@ -17,6 +17,7 @@ const BlogFeed = ({ blogCount }) => {
     client
       .getEntries({
         content_type: "blogPost",
+        order: "-sys.createdAt",
         limit: blogCount,
       })
       .then((response) => {

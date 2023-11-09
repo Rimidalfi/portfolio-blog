@@ -6,13 +6,13 @@ import BlogFeed from "../BlogFeed/Index";
 export default function Home() {
   const [header, setHeader] = useState(null);
 
-  const { VITE_ACCESS_TOKEN, VITE_SPACE_ID } = import.meta.env;
+  const { VITE_SPACE_ID, VITE_ACCESS_TOKEN } = import.meta.env;
 
   useEffect(() => {
     const client = contentful.createClient({
-      space: "oz7f6gt77mhs",
+      space: VITE_SPACE_ID,
       environment: "master",
-      accessToken: "TvI3tvQ_YpazFu5isGpalaV2u-7RTmAEzxRTGqjFBqA",
+      accessToken: VITE_ACCESS_TOKEN,
     });
 
     client
@@ -27,8 +27,8 @@ export default function Home() {
     return (
       <img
         className="header"
-         key={item.sys.id}
-         src={item.fields.headerBild.fields.file.url}
+        key={item.sys.id}
+        src={item.fields.headerBild.fields.file.url}
       />
     );
   });
@@ -44,8 +44,8 @@ export default function Home() {
       <div className="headerContainer">
         <div className="titelContainer">
           <div className="headerContent">
-          <h1>{headerTitel}</h1>
-          <p>{subTitel}</p>
+            <h1>{headerTitel}</h1>
+            <p>{subTitel}</p>
           </div>
         </div>
         <div>{headerBild}</div>
@@ -53,13 +53,4 @@ export default function Home() {
       <BlogFeed blogCount={5} />
     </>
   );
-}
-
-{
-  /* <div>
-  <form action="">
-    <label htmlFor="Search">Discover</label>
-    <input type="text" />
-  </form>
-</div> */
 }
