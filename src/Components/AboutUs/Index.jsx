@@ -29,10 +29,6 @@ const AboutUs = () => {
 const ListOfAutors = autorlist?.map((item) => {
 
        return (
-          <>
-            <Head>
-            <title>About Us</title>
-            </Head>
             <div key={item.sys.id} className="autorenliste">
              <div className="autorName">
              <h2>{item.fields.nameAutor}</h2>
@@ -44,10 +40,12 @@ const ListOfAutors = autorlist?.map((item) => {
              <p>{item.fields.about}</p>
              </div>
              </div>
-        </>
     )})
    return (
     <>
+          <Head>
+            <title>About Us</title>
+            </Head>
         <h1>Unser Autorenteam</h1>
         <div>{ListOfAutors}</div> 
     </>

@@ -7,20 +7,14 @@ const client = contentful.createClient({
    })
    
    client.getEntries({
-    content_type: '<content_type_id>',
+    content_type: "blogPost",
     select: 'sys.id,fields.title,fields.tags'
    })
    .then((response) => console.log(response.items))
    .catch(console.error)
 
-   client.getEntries({
-    content_type: '<content_type_id>',
-    'fields.tags[match]': '<tag>'
-   })
-   .then((response) => console.log(response.items))
-   .catch(console.error)
 
-   export default function Posts() {
+   export default function TagFilter() {
     const [posts, isLoading] = usePosts()
     const renderPosts = () => {
       if (isLoading) return <p>Loading...</p>

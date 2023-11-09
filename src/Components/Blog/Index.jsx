@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { createClient } from "contentful";
 import BlogPost from "./BlogPost";
 import { useParams } from "react-router-dom";
-import { Helmet } from "react-helmet";
 import Head from "../Head"
 
 // Import enviromental variables deconstructed
@@ -21,8 +20,7 @@ const Blog = () => {
     client
       .getEntry(id)
       .then((entry) => {
-        // console.log("Blogpost:", blogPost);
-        console.log("ENTRY:", entry);
+        console.log("id:", id);
         setBlogpost(entry.fields);
       })
       .catch(console.error);

@@ -32,7 +32,7 @@ const Impressum = () => {
   return (
     <>
         <Head>
-        <title>About Us</title>
+        <title>Impressum</title>
         </Head>
       {impressumpost !== null ? (
         <ImpressumPost

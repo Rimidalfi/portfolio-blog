@@ -3,15 +3,22 @@ import BlogCardRT from "./BlogCardRT";
 const Card = ({ title, intro, img }) => {
   return (
     <>
-      <h1 className="blogCardTitle">{title}</h1>
-      <BlogCardRT intro={intro} />
+      <div className="blogcard-container">
+      <div className="blogcard-title"><h1 className="blogCardTitle">{title}</h1></div>
+      <div className="blogcard-intro"><BlogCardRT intro={intro} /></div>
+      <div className="blogcard-imgcontainer">
       <img
-        className="blogCardImage"
+        className="blogCardImg"
         src={img.fields.file.url}
         alt={img.description}
       />
-      <button className="blogCardButton">Zum Artikel</button>
+      </div>
+      </div>
     </>
   );
 };
 export default Card;
+
+{
+  /* <button className="blogCardButton">Zum Artikel</button> */
+}

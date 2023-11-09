@@ -7,60 +7,72 @@ import Head from "../Head";
 
 export default function Home() {
   const [header, setHeader] = useState(null);
-
+  const headerID = "3RNUuPtoHE3ZdLUOMYmGCj"
   const { VITE_ACCESS_TOKEN, VITE_SPACE_ID } = import.meta.env;
 
   useEffect(() => {
     const client = contentful.createClient({
-      space: "oz7f6gt77mhs",
+      space: VITE_SPACE_ID,
       environment: "master",
-      accessToken: "TvI3tvQ_YpazFu5isGpalaV2u-7RTmAEzxRTGqjFBqA",
+      accessToken: VITE_ACCESS_TOKEN,
     });
 
     client
-      .getEntry("3RNUuPtoHE3ZdLUOMYmGCj")
+      .getEntry(headerID)
       .then((data) => {
-        console.log(data);
         setHeader([data]);
       })
       .catch(console.error);
   }, []);
 
-  const headerBild = header?.map((item) => {
-    return (
-      <img
-        className="header"
-        key={item.sys.id}
-        src={item.fields.headerBild.fields.file.url}
-      />
-    );
-  });
+  // const headerBild = header?.map((item) => {
+  //   return (
+  //     <div
+  //     /* <img */
+  //       className="header"
+  //        key={item.sys.id}
+  //        style={{ 
+  //         backgroundImage: `url(${item.fields.headerBild.fields.file.url})`, 
+  //         backgroundPosition: 'center', 
+  //         backgroundSize: 'cover' 
+  //       }}></div>
+  //       //  src={item.fields.headerBild.fields.file.url}
+  //     // />
+  //   );
+  // });
+
   const headerTitel = header?.map((item) => {
-    return <p key={item.sys.id}>{item.fields.homeTitel}</p>;
+    return (<div key={item.sys.id}><h1 className="headerTitel">{item.fields.homeTitel}</h1>
+    <p className="subTitel">{item.fields.headerTitel}</p></div>)
   });
-  const subTitel = header?.map((item) => {
-    return <p key={item.sys.id}>{item.fields.headerTitel}</p>;
-  });
+
 
   return (
     <>
     <Head> 
-      <title>Portfolio Blog - Home</title>
+      <title>KI Blog - Home</title>
     </Head>
-      <div className="headerContainer">
+    {header?.map((item) => {
+    return (
+      <div
+  
+        className="header"
+         key={item.sys.id}
+         style={{ 
+          backgroundImage: `url(${item.fields.headerBild.fields.file.url})`, 
+          backgroundPosition: 'center', 
+          backgroundSize: 'cover' 
+        }}>
+         
         <div className="titelContainer">
-          <h1>{headerTitel}</h1>
-          <p>{subTitel}</p>
-        </div>
-        <div>{headerBild}</div>
-      </div>
-      <div>
-        <form action="">
-          <label htmlFor="Search">Discover</label>
-          <input type="text" />
-        </form>
-      </div>
-      <BlogFeed />
+          <div className="headerContent">
+          {headerTitel}
+          </div>
+        </div>    
+      </div>);
+  })}
+      <BlogFeed blogCount={5} />
+
     </>
   );
 }
