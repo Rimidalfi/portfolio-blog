@@ -59,7 +59,7 @@ export default function Header() {
   return (
     <>
       {navi !== null ? (
-        <nav>
+        <nav className="navbarall">
           <Logo logo={logo} />
           <Navigation navigation={Header} />
         </nav>

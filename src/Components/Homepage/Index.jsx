@@ -43,8 +43,10 @@ export default function Home() {
     <>
       <div className="headerContainer">
         <div className="titelContainer">
+          <div className="headerContent">
           <h1>{headerTitel}</h1>
           <p>{subTitel}</p>
+          </div>
         </div>
         <div>{headerBild}</div>
       </div>
