@@ -5,3 +5,5 @@ This Portfolio Website is build with **React** in the frontend and **Contentfull
 _Note: create a local enviroment variable on your local install for the API tokes_
 
     .env.local
+
+We are live!
