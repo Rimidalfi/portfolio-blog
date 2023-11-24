@@ -1,39 +1,36 @@
 import { useState, useEffect } from "react";
-import { createClient } from "contentful";
 import BlogPost from "./BlogPost";
 import { useParams } from "react-router-dom";
 
-// Import enviromental variables deconstructed
-const { VITE_SPACE_ID, VITE_ACCESS_TOKEN } = import.meta.env;
 const Blog = () => {
   const { id } = useParams();
   const [blogpost, setBlogpost] = useState(null);
+
   useEffect(() => {
-    //erstellen Client mit Zugangsdaten
-    const client = createClient({
-      space: VITE_SPACE_ID,
-      environment: "master",
-      accessToken: VITE_ACCESS_TOKEN,
-    });
-    //API Fetch der spezifischen Daten
-    client
-      .getEntry(id)
-      .then((entry) => {
-        console.log("id:", id);
-        setBlogpost(entry.fields);
+    const fetchData = async () => {
+      const response = await fetch(`http://localhost:8080/blog/${id}`);
+      if (response.status !== 200) {
+        throw new Error("CAN NOT FETCH DATA!");
+      }
+      return response.json();
+    };
+    fetchData()
+      .then((data) => {
+        setBlogpost(data[0]);
+        console.log("DATA FETCHED", data);
       })
-      .catch(console.error);
+      .catch((err) => console.log("DATA NOT FETCHED!", err.message));
   }, []);
 
   return (
     <>
       {blogpost !== null ? (
         <BlogPost
-          title={blogpost.blogTitle}
-          author={blogpost.blogAuthor}
-          date={blogpost.blogCreationDate}
-          img={blogpost.blogImage}
-          blogJSON={blogpost.blogArticle}
+          title={blogpost.title}
+          author={blogpost.author}
+          date={blogpost.creationdate.split("T")[0]}
+          img_url={blogpost.img_url}
+          article={blogpost.article}
         />
       ) : (
         <p>LOADING ...</p>

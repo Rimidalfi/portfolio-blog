@@ -1,26 +1,23 @@
 import { useState, useEffect } from "react";
-import { createClient } from "contentful";
 import Card from "./Card";
 import { Link } from "react-router-dom";
 
-// Import enviromental variables deconstructed
-const { VITE_SPACE_ID, VITE_ACCESS_TOKEN } = import.meta.env;
 const BlogCard = ({ id }) => {
   const [blogcard, setBlogcard] = useState(null);
   useEffect(() => {
-    //erstellen Client mit Zugangsdaten
-    const client = createClient({
-      space: VITE_SPACE_ID,
-      environment: "master",
-      accessToken: VITE_ACCESS_TOKEN,
-    });
-    //API Fetch der spezifischen Daten
-    client
-      .getEntry(id)
-      .then((entry) => {
-        setBlogcard(entry.fields);
+    const fetchData = async () => {
+      const response = await fetch(`http://localhost:8080/blog/${id}`);
+      if (response.status !== 200) {
+        throw new Error("CAN NOT FETCH DATA!");
+      }
+      return response.json();
+    };
+    fetchData()
+      .then((data) => {
+        setBlogcard(data[0]);
+        console.log("DATA FETCHED", data);
       })
-      .catch(console.error);
+      .catch((err) => console.log("DATA NOT FETCHED!", err.message));
   }, []);
 
   return (
@@ -28,9 +25,9 @@ const BlogCard = ({ id }) => {
       {blogcard !== null ? (
         <Link to={`/blog/${id}`}>
           <Card
-            title={blogcard.blogTitle}
-            img={blogcard.blogImage}
-            intro={blogcard.blogIntroduction}
+            title={blogcard.title}
+            img_url={blogcard.img_url}
+            intro={blogcard.intro}
           />
         </Link>
       ) : (

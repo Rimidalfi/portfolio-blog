@@ -50,7 +50,7 @@ export default function Home() {
         </div>
         <div>{headerBild}</div>
       </div>
-      <BlogFeed blogCount={5} />
+      <BlogFeed />
     </>
   );
 }

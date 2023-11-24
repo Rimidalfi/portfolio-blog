@@ -1,34 +1,29 @@
 import { useState, useEffect } from "react";
-import { createClient } from "contentful";
 import BlogCard from "../BlogCard/Index";
 
-// Import enviromental variables deconstructed
-const { VITE_SPACE_ID, VITE_ACCESS_TOKEN } = import.meta.env;
-const BlogFeed = ({ blogCount }) => {
+const BlogFeed = () => {
   const [blogpostlist, setblogpostlist] = useState([]);
   useEffect(() => {
-    //erstellen Client mit Zugangsdaten
-    const client = createClient({
-      space: VITE_SPACE_ID,
-      environment: "master",
-      accessToken: VITE_ACCESS_TOKEN,
-    });
-    //API Fetch der spezifischen Daten
-    client
-      .getEntries({
-        content_type: "blogPost",
-        order: "-sys.createdAt",
-        limit: blogCount,
+    const fetchData = async () => {
+      const response = await fetch("http://localhost:8080/blog/");
+      if (response.status !== 200) {
+        throw new Error("CAN NOT FETCH DATA!");
+      }
+      return response.json();
+    };
+    fetchData()
+      .then((data) => {
+        setblogpostlist(data);
+        console.log("DATA FETCHED", data);
       })
-      .then((response) => {
-        setblogpostlist(response.items);
-      })
-      .catch(console.error);
+      .catch((err) => console.log("DATA NOT FETCHED!", err.message));
   }, []);
+
   const ListOfBlogposts = blogpostlist?.map((item) => {
+    console.log(item.id);
     return (
-      <div key={item.sys.id}>
-        <BlogCard id={item.sys.id} />
+      <div key={item.id}>
+        <BlogCard id={item.id} />
       </div>
     );
   });
